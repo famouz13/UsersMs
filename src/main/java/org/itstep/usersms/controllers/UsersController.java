@@ -1,5 +1,6 @@
 package org.itstep.usersms.controllers;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.itstep.usersms.controllers.responses.TokenBody;
 import org.itstep.usersms.models.DTOs.AddRoleToUserDto;
 import org.itstep.usersms.models.DTOs.UserDto;
@@ -13,10 +14,12 @@ import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
+@SecurityRequirement(name = "authorization")
 public class UsersController {
 
     @Autowired
     private UsersService usersService;
+
 
     @GetMapping("api/v1/admin/users")
     public List<UserDto> getUsers() {
